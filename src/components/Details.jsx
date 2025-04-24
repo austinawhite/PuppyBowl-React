@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 function Details() {
-  const { id } = useParams(); // Get the puppy ID from the URL
+  const { id } = useParams();
   const [player, setPlayer] = useState(null);
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ function Details() {
         const data = await res.json();
         setPlayer(data.data.player);
       } catch (error) {
-        console.error("Error fetching player details", error);
+        console.error("Error", error);
       }
     };
 
@@ -25,7 +25,7 @@ function Details() {
   return (
     <div className="details">
       <h2>{player.name}</h2>
-      <img src={player.imageUrl} alt={player.name} style={{ width: "300px" }} />
+      <img src={player.imageUrl} alt={player.name} style={{ width: "250px" }} />
       <p><strong>Breed:</strong> {player.breed}</p>
       <p><strong>Status:</strong> {player.status}</p>
       <p><strong>Team:</strong> {player.team?.name || "Awaiting Team Assignment"}</p>
